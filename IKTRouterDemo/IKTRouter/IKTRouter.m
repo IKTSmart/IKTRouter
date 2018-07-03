@@ -37,13 +37,17 @@
 }
 
 - (void)pushController:(NSString *)controllerName Args:(NSDictionary *)args CallBack:(RouterCallBack)callBack{
-    Class controllerClass = NSClassFromString(controllerName);
     
-    if (!controllerClass) {
+    Class controllerClass = NSClassFromString(controllerName);
+    id controller = [[controllerClass alloc] init];
+    
+    if ([controller isKindOfClass:[UINavigationController class]]) {
         return;
     }
     
-    id controller = [[controllerClass alloc] init];
+    if (!controllerClass || ![controller isKindOfClass:[UIViewController class]]) {
+        return;
+    }
     
     u_int count;
     objc_property_t *properties = class_copyPropertyList(controllerClass, &count);
