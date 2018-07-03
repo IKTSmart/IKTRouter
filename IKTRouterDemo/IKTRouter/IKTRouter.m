@@ -38,6 +38,11 @@
 
 - (void)pushController:(NSString *)controllerName Args:(NSDictionary *)args CallBack:(RouterCallBack)callBack{
     Class controllerClass = NSClassFromString(controllerName);
+    
+    if (!controllerClass) {
+        return;
+    }
+    
     id controller = [[controllerClass alloc] init];
     
     u_int count;
