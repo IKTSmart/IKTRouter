@@ -42,7 +42,6 @@ target 'DemoName' do
 
 end
 
-}
 ```
 
 
