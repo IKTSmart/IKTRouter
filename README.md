@@ -34,6 +34,15 @@ IKTRouter 路由
 }
 ```
 
+### cocoapods下载
+``` 
+target 'DemoName' do
+
+  pod 'IKTRouter'
+
+end
+
+```
 
 
 ## 反馈与建议
