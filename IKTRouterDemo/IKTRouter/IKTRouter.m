@@ -12,7 +12,7 @@
 
 @interface IKTRouter ()
 
-@property (nonatomic, weak) UINavigationController *navigationController;
+@property (nonatomic, strong) UINavigationController *navigationController;
 
 @end
 
