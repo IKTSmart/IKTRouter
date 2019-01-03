@@ -59,18 +59,117 @@
     }
     free(properties);
     
-    if (args.count>0 &&[propertiesArray containsObject:@"routerArgs"]) {
+    Class superControllerClass = [controllerClass superclass];
+    u_int superCount;
+    objc_property_t *superProperties = class_copyPropertyList(superControllerClass, &superCount);
+    NSMutableArray *superPropertiesArray = [NSMutableArray arrayWithCapacity:superCount];
+    
+    for (int i = 0; i < superCount; i++) {
+        const char *propertyName = property_getName(superProperties[i]);
+        [superPropertiesArray addObject:[NSString stringWithUTF8String:propertyName]];
+    }
+    free(superProperties);
+    
+    if (args.count>0 &&([propertiesArray containsObject:@"routerArgs"]||[superPropertiesArray containsObject:@"routerArgs"])) {
         [controller setValue:[args mutableCopy] forKey:@"routerArgs"];
     }
-    
-    if (callBack && [propertiesArray containsObject:@"routerCallBack"]) {
+
+    if (callBack && ([propertiesArray containsObject:@"routerCallBack"]||[superPropertiesArray containsObject:@"routerCallBack"])) {
         [controller setValue:callBack forKey:@"routerCallBack"];
+    }
+    
+    //尝试设置参数
+    NSArray *keys = [args allKeys];
+    for (NSString *key in keys){
+        if ([propertiesArray containsObject:key]) {
+            [controller setValue:[args objectForKey:key] forKey:key];
+        }
     }
     
     if (_navigationController) {
         [_navigationController pushViewController:controller animated:YES];
     }
     
+}
+
+- (void)pushController:(UIViewController *)controller animated:(BOOL)animated{
+    
+    if (_navigationController) {
+        [_navigationController pushViewController:controller animated:YES];
+    }
+}
+
+- (void)presentViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0){
+    
+    if (_navigationController) {
+        [_navigationController presentViewController:controller animated:YES completion:completion];
+    }
+}
+
+- (void)presentController:(NSString *)controllerName Animated:(BOOL)animated{
+    
+    if (!controllerName) {
+        return;
+    }
+    [self presentController:controllerName Animated:animated Completion:nil];
+}
+
+- (void)presentController:(NSString *)controllerName Animated:(BOOL)animated Completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0){
+    
+    Class controllerClass = NSClassFromString(controllerName);
+    id controller = [[controllerClass alloc] init];
+    
+    if ([controller isKindOfClass:[UIViewController class]] && _navigationController) {
+        
+        [_navigationController presentViewController:controller animated:animated completion:completion];
+    }
+    
+}
+
+- (void)dismissViewControllerAnimated:(BOOL)animiated completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0){
+    
+    if (_navigationController) {
+        [_navigationController dismissViewControllerAnimated:animiated completion:completion];
+    }
+}
+
+- (void)popToRootViewControllerAnimated:(BOOL)animated{
+    if (_navigationController) {
+        [_navigationController popToRootViewControllerAnimated:animated];
+    }
+}
+
+- (void)popToRootViewControllerAnimated:(BOOL)animated TabIndex:(NSInteger)index{
+    
+    if (_navigationController) {
+        [_navigationController popToRootViewControllerAnimated:animated];
+        [_navigationController.tabBarController setSelectedIndex:index];
+    }
+}
+
+- (void)popViewControllerAnimated:(BOOL)animated{
+    if (_navigationController) {
+        [_navigationController popViewControllerAnimated:animated];
+    }
+}
+
+- (void)popViewControllerAnimated:(BOOL)animated TabIndex:(NSInteger)index{
+    
+    if (_navigationController) {
+        [_navigationController popViewControllerAnimated:animated];
+        
+        __weak typeof(UINavigationController *) weakNavigation = _navigationController;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakNavigation.visibleViewController.tabBarController setSelectedIndex:0];
+        });
+    }
+}
+
+- (void)selectTabIndex:(NSInteger)index{
+    
+    if (_navigationController && _navigationController.tabBarController.viewControllers.count>index) {
+        [_navigationController.tabBarController setSelectedIndex:index];
+    }
 }
 
 @end
@@ -112,5 +211,6 @@ void swizzleMethod(Class class, SEL originalSelector, SEL swizzledSelector) {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
+
 
 @end

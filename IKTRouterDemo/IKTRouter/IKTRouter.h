@@ -26,4 +26,24 @@ typedef void(^RouterCallBack)(NSDictionary *paramers);
 
 - (void)pushController:(NSString *)controllerName Args:(NSDictionary *)args CallBack:(RouterCallBack)callBack;
 
+- (void)pushController:(UIViewController *)controller animated:(BOOL)animated;
+
+- (void)presentViewController:(UIViewController *)controller animated:(BOOL)animated completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0);
+
+- (void)presentController:(NSString *)controllerName Animated:(BOOL)animated;
+
+- (void)presentController:(NSString *)controllerName Animated:(BOOL)animated Completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0);
+
+- (void)dismissViewControllerAnimated:(BOOL)animiated completion:(void (^ __nullable)(void))completion NS_AVAILABLE_IOS(5_0);
+
+- (void)popToRootViewControllerAnimated:(BOOL)animated;
+
+- (void)popToRootViewControllerAnimated:(BOOL)animated TabIndex:(NSInteger)index;
+
+- (void)popViewControllerAnimated:(BOOL)animated;
+
+- (void)popViewControllerAnimated:(BOOL)animated TabIndex:(NSInteger)index;
+
+- (void)selectTabIndex:(NSInteger)index;
+
 @end
