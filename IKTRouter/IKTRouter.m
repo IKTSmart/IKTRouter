@@ -2,8 +2,8 @@
 //  IKTRouter.m
 //  IKTRouterDemo
 //  https://github.com/IKTSmart/IKTRouter.git
-//  Created by bcikt on 2018/7/3.
-//  Copyright © 2018年 bcikt. All rights reserved.
+//  Created by ETScorpion on 2018/7/3.
+//  Copyright © 2018年 ETScorpion. All rights reserved.
 //
 
 #import "IKTRouter.h"
