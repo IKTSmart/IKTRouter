@@ -9,6 +9,8 @@
 #import "IKTRouter.h"
 #import <objc/runtime.h>
 #import <UIKit/UINavigationController.h>
+#import <UIKit/UINavigationController.h>
+#import <UIKit/UITabBarController.h>
 
 @interface IKTRouter ()
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55018C1C21E2E32100B9EEAB /* IKTRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55018C1A21E2E32000B9EEAB /* IKTRouter.m */; };
 		554A59B620EB596800F36465 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 554A59B520EB596800F36465 /* AppDelegate.m */; };
 		554A59B920EB596800F36465 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554A59B820EB596800F36465 /* ViewController.m */; };
 		554A59BC20EB596800F36465 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554A59BA20EB596800F36465 /* Main.storyboard */; };
@@ -17,8 +18,6 @@
 		554A59D920EB596B00F36465 /* IKTRouterDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 554A59D820EB596B00F36465 /* IKTRouterDemoUITests.m */; };
 		554A59EC20EB5AFE00F36465 /* ArgsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554A59EB20EB5AFE00F36465 /* ArgsViewController.m */; };
 		554A59EF20EB5B1800F36465 /* CallBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 554A59EE20EB5B1800F36465 /* CallBackViewController.m */; };
-		554A910721DF3E1500A909AB /* IKTRouter in Resources */ = {isa = PBXBuildFile; fileRef = 554A910621DF3E1500A909AB /* IKTRouter */; };
-		554A910821DF3E2000A909AB /* IKTRouter in Sources */ = {isa = PBXBuildFile; fileRef = 554A910621DF3E1500A909AB /* IKTRouter */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55018C1A21E2E32000B9EEAB /* IKTRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IKTRouter.m; sourceTree = "<group>"; };
+		55018C1B21E2E32000B9EEAB /* IKTRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IKTRouter.h; sourceTree = "<group>"; };
 		554A59B120EB596800F36465 /* IKTRouterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IKTRouterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		554A59B420EB596800F36465 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		554A59B520EB596800F36465 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		554A59ED20EB5B1800F36465 /* CallBackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallBackViewController.h; sourceTree = "<group>"; };
 		554A59EE20EB5B1800F36465 /* CallBackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallBackViewController.m; sourceTree = "<group>"; };
 		554A59F120EB5C1200F36465 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		554A910621DF3E1500A909AB /* IKTRouter */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IKTRouter; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +88,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55018C1921E2E32000B9EEAB /* IKTRouter */ = {
+			isa = PBXGroup;
+			children = (
+				55018C1B21E2E32000B9EEAB /* IKTRouter.h */,
+				55018C1A21E2E32000B9EEAB /* IKTRouter.m */,
+			);
+			path = IKTRouter;
+			sourceTree = "<group>";
+		};
 		554A59A820EB596800F36465 = {
 			isa = PBXGroup;
 			children = (
-				554A910621DF3E1500A909AB /* IKTRouter */,
+				55018C1921E2E32000B9EEAB /* IKTRouter */,
 				554A59B320EB596800F36465 /* IKTRouterDemo */,
 				554A59CC20EB596B00F36465 /* IKTRouterDemoTests */,
 				554A59D720EB596B00F36465 /* IKTRouterDemoUITests */,
@@ -253,7 +262,6 @@
 			files = (
 				554A59C120EB596B00F36465 /* LaunchScreen.storyboard in Resources */,
 				554A59BE20EB596B00F36465 /* Assets.xcassets in Resources */,
-				554A910721DF3E1500A909AB /* IKTRouter in Resources */,
 				554A59BC20EB596800F36465 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,10 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				554A910821DF3E2000A909AB /* IKTRouter in Sources */,
 				554A59B920EB596800F36465 /* ViewController.m in Sources */,
 				554A59EC20EB5AFE00F36465 /* ArgsViewController.m in Sources */,
 				554A59C420EB596B00F36465 /* main.m in Sources */,
+				55018C1C21E2E32100B9EEAB /* IKTRouter.m in Sources */,
 				554A59EF20EB5B1800F36465 /* CallBackViewController.m in Sources */,
 				554A59B620EB596800F36465 /* AppDelegate.m in Sources */,
 			);
