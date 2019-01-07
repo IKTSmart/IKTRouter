@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-@class UIViewController;
 
 /* ---------
  * IKTRouter 路由
