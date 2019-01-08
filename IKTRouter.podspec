@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IKTRouter'
-  s.version          = '1.0.1'
+  s.version          = '1.0.3'
   s.summary          = 'Router Module for iOS'
 
   s.description      = <<-DESC
