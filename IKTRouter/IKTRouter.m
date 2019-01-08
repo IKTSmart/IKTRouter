@@ -11,7 +11,6 @@
 #import <UIKit/UINavigationController.h>
 #import <UIKit/UITabBarController.h>
 
-
 @interface IKTRouter ()
 
 @property (nonatomic, weak) UINavigationController *navigationController;
@@ -162,12 +161,21 @@
         
         __weak typeof(UINavigationController *) weakNavigation = _navigationController;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakNavigation.visibleViewController.tabBarController setSelectedIndex:0];
+            [weakNavigation.visibleViewController.tabBarController setSelectedIndex:index];
         });
     }
 }
 
 - (void)selectTabIndex:(NSInteger)index{
+    
+    if (_navigationController && _navigationController.tabBarController.viewControllers.count>index) {
+        UINavigationController *lastNavigationVC = _navigationController;
+        [_navigationController.tabBarController setSelectedIndex:index];
+        [lastNavigationVC popToRootViewControllerAnimated:YES];
+    }
+}
+
+- (void)selectTabIndexNoPop:(NSInteger)index{
     
     if (_navigationController && _navigationController.tabBarController.viewControllers.count>index) {
         [_navigationController.tabBarController setSelectedIndex:index];

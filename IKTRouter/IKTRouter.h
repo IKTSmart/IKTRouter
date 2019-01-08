@@ -47,4 +47,6 @@ typedef void(^RouterCallBack)(NSDictionary *paramers);
 
 - (void)selectTabIndex:(NSInteger)index;
 
+- (void)selectTabIndexNoPop:(NSInteger)index;
+
 @end

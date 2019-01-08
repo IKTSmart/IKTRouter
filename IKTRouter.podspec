@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IKTRouter'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = '跳转路由'
 
   s.description      = <<-DESC
