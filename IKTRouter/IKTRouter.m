@@ -74,7 +74,7 @@
     if (args.count>0 &&([propertiesArray containsObject:@"routerArgs"]||[superPropertiesArray containsObject:@"routerArgs"])) {
         [controller setValue:[args mutableCopy] forKey:@"routerArgs"];
     }
-
+    
     if (callBack && ([propertiesArray containsObject:@"routerCallBack"]||[superPropertiesArray containsObject:@"routerCallBack"])) {
         [controller setValue:callBack forKey:@"routerCallBack"];
     }
